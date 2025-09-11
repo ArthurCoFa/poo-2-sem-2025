@@ -31,5 +31,7 @@ public class Principal {
 			
 			System.out.println(disciplinas.get(i));
 		}
+		
+		System.out.println(disciplinas.contains("Cálculo II"));
 	}
 }
