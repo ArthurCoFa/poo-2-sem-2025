@@ -15,9 +15,6 @@ public class Questao_1 {
 		
 		System.out.println(elementos.size());
 		
-		if(elementos.contains("Carro")) {
-			
-			System.out.println("Ele possui o elemento Carro.");
-		}
+		System.out.println(elementos.contains("Carro"));
 	}
 }
