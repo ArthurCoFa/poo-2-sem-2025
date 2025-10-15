@@ -6,7 +6,7 @@ public class Principal {
 		Livro l1 = new Fisico();
 		l1.setTitulo("Algebra");
 		l1.setAutor("Stewart");
-		l1.imprimeInformacoes();// Classe diferentes mesmo método sobrescrita
+		l1.imprimeInformacoes();// Classe diferentes mesmo método == sobrescrita
 		
 		Biblioteca b1 = new Biblioteca("Central");
 		System.out.println(b1.getNome());
