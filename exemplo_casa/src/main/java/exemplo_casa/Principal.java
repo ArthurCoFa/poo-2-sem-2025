@@ -1,4 +1,6 @@
-package exemplo;
+package exemplo_casa;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Principal implements CommandLineRunner {
 	
 	@Autowired
-	PessoaRepository pessoaRepository;
+	AlunosRepository alunosRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Principal.class, args);
@@ -18,6 +20,12 @@ public class Principal implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		pessoaRepository.findAll();
+		Alunos a = new Alunos();
+		a.setId(2L);
+		a.setIdade(22);
+		a.setNome("João");
+		
+		alunosRepository.save(a);
+
 	}
 }

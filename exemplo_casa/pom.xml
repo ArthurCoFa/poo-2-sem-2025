@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.6</version>
+		<version>3.5.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.edu.ceub</groupId>
-	<artifactId>projeto</artifactId>
+	<artifactId>exemplo_casa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>projeto</name>
-	<description>projeto teste jpa</description>
+	<name>exemplo_casa</name>
+	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -46,7 +46,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
