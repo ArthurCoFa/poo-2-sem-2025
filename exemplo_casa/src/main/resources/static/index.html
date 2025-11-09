@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Alunos</title>
+    
+	<link rel="stylesheet" href="css/style.css">
+	
+</head>
+<body>
+
+    <h1>📚 Gerenciamento de Alunos</h1>
+
+    <div id="form-aluno">
+        <h3>Adicionar Novo Aluno</h3>
+        
+        <input type="hidden" id="aluno-id">
+
+        <input type="text" id="nome" placeholder="Nome do Aluno" required>
+        <input type="number" id="idade" placeholder="Idade" required>
+        
+        <button id="botao-salvar" onclick="salvarOuAtualizarAluno()">Salvar Aluno</button>
+        <button id="botao-cancelar" class="cancel-btn" style="display:none;" onclick="cancelarEdicao()">Cancelar</button>
+    </div>
+
+    <h2>Lista de Alunos</h2>
+    <table id="tabela-alunos">
+        <thead>
+            <tr>
+                <th>ID</th>
+				<th> Matricula </th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="alunos-lista">
+            </tbody>
+    </table>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
