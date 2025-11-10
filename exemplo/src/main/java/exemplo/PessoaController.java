@@ -1,6 +1,7 @@
 package exemplo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +47,19 @@ public class PessoaController {
 	        return pessoaRepository.save(pessoa);
 	   }
 	   return null;
+	}
+	
+	@GetMapping("/{id}") // Mapeia para GET /api/alunos/{id}
+	public ResponseEntity<Pessoa> getPessoaById(@PathVariable Long id) {
+	    // Sua lógica de buscar no banco
+	    Optional<Pessoa> pessoa = pessoaRepository.findById(id); 
+
+	    // O Spring Boot espera uma resposta correta: 200 OK ou 404 Not Found
+	    if (pessoa.isPresent()) {
+	        return ResponseEntity.ok(pessoa.get()); // Retorna 200 OK com o JSON do aluno
+	    } else {
+	        return ResponseEntity.notFound().build(); // Retorna 404 Not Found
+	    }
 	}
 
 }
