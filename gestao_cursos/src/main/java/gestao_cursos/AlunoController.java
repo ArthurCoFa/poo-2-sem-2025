@@ -1,4 +1,4 @@
-package exemplo_casa;
+package gestao_cursos;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,24 +14,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping("/api/alunos")
-public class AlunosController {
+public class AlunoController {
 	
 	@Autowired
-	AlunosRepository alunosRepository;
+	private AlunoRepository alunoRepository;
+	
+	@PostMapping
+	public Aluno salvarAluno(@RequestBody Aluno aluno) {
+		return alunoRepository.save(aluno);
+	}
 	
 	@GetMapping
-	public List<Alunos> listarAlunos(){
-		return alunosRepository.findAll();
+	public List<Aluno> listarAlunos() {	
+		return alunoRepository.findAll();
 	}
 	
 	@GetMapping("/{id}") // Mapeia para GET /api/alunos/{id}
-	public ResponseEntity<Alunos> getAlunoById(@PathVariable Long id) {
+	public ResponseEntity<Aluno> getAlunoById(@PathVariable Long id) {
 	    // Sua lógica de buscar no banco
-	    Optional<Alunos> aluno = alunosRepository.findById(id); 
+	    Optional<Aluno> aluno = alunoRepository.findById(id); 
 
 	    // O Spring Boot espera uma resposta correta: 200 OK ou 404 Not Found
 	    if (aluno.isPresent()) {
@@ -41,31 +44,21 @@ public class AlunosController {
 	    }
 	}
 	
-	@PostMapping
-	public Alunos salvarAlunos(@Valid @RequestBody Alunos aluno) {
-		
-		String novaMatricula = "M-" + String.valueOf(System.currentTimeMillis());
-		
-		aluno.setMatricula(novaMatricula);
-		
-		return alunosRepository.save(aluno);
-	}
-	
 	@DeleteMapping("/{id}")
 	public void deletarAlunos(@PathVariable Long id) {
-		alunosRepository.deleteById(id);
+		alunoRepository.deleteById(id);
 	}
 	
 	@PutMapping("/{id}")
-	public Alunos atualizarAlunos(@PathVariable Long id, @Valid @RequestBody Alunos novoAlunos) {
-		Optional<Alunos> optionalAlunos = alunosRepository.findById(id);
-	    if (optionalAlunos.isPresent()) {
-	    	Alunos alunos = optionalAlunos.get();
-	        alunos.setNome(novoAlunos.getNome());
-	        alunos.setIdade(novoAlunos.getIdade());
+	public Aluno atualizarAlunos(@PathVariable Long id, @RequestBody Aluno novoAluno) {
+		Optional<Aluno> optionalAluno = alunoRepository.findById(id);
+		if(optionalAluno.isPresent()) {
+			Aluno aluno = optionalAluno.get();
+	        aluno.setNomeAluno(novoAluno.getNomeAluno());
+	        aluno.setIdade(novoAluno.getIdade());
 	           
-	        return alunosRepository.save(alunos);
-	   }
-	   return null;
+	        return alunoRepository.save(aluno);
+		}
+		return null;
 	}
 }
