@@ -7,11 +7,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Principal implements CommandLineRunner {
 	
-	private AlunoRepository alunoRepository;
-    private CursoRepository cursoRepository;
-    private InstrutorRepository instrutorRepository;
-    private AlunoHasCursoRepository alunoHasCursoRepository;
+	private final AlunoRepository alunoRepository;
+    private final CursoRepository cursoRepository;
+    private final InstrutorRepository instrutorRepository;
+    private final AlunoHasCursoRepository alunoHasCursoRepository;
 	
+    public Principal(AlunoRepository alunoRepository,
+    					 CursoRepository cursoRepository,
+    					 InstrutorRepository instrutorRepository,
+    					 AlunoHasCursoRepository alunoHasCursoRepository) {
+		this.alunoRepository = alunoRepository;
+		this.cursoRepository = cursoRepository;
+		this.instrutorRepository = instrutorRepository;
+		this.alunoHasCursoRepository = alunoHasCursoRepository;
+	}
+    
 	public static void main(String[] args) {
 		SpringApplication.run(Principal.class, args);
 	}

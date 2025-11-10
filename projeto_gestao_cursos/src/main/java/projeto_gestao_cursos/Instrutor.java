@@ -8,20 +8,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+//import jakarta.validation.constraints.Size;
 
 @Entity
+@Table(name = "tb_instrutor")
 public class Instrutor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_instrutor")
 	private Long idInstrutor;
 	
-	@Column(name = "nome_intrutor")
-	@NotBlank
+	@Column(name = "nome_instrutor", length = 50, nullable = false)
+	@NotBlank(message = "O nome do instrutor é obrigatório!")
 	private String nomeInstrutor;
 	
-	@NotBlank
+	@NotBlank(message = "O CPF não pode ser vazio!")
+	@Column(name = "cpf", length = 11, nullable = false, unique = true)
 	private String cpf;
 
 	@OneToMany(mappedBy = "instrutor")
@@ -37,7 +42,7 @@ public class Instrutor {
 	public List<Curso> getCursos() {
 		return cursos;
 	}
-
+	
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
 	}

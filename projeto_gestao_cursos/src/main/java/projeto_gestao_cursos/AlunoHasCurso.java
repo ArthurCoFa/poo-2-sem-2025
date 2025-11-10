@@ -8,20 +8,20 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "aluno_has_curso")
+@Table(name = "tb_aluno_has_tb_curso")
 public class AlunoHasCurso {
 
 	@EmbeddedId
 	private AlunoHasCursoId id;
 	
 	@ManyToOne
-	@MapsId("idAluno")
-	@JoinColumn(name = "Aluno_idAluno")
+	@MapsId("tb_aluno_id_aluno")
+	@JoinColumn(name = "tb_aluno_id_aluno")
 	private Aluno aluno;
 	
 	@ManyToOne
-	@MapsId("idCurso")
-	@JoinColumn(name = "Curso_idCurso")
+	@MapsId("tb_curso_id_curso")
+	@JoinColumn(name = "tb_curso_id_curso")
 	private Curso curso;
 	
 	public AlunoHasCurso() {}
@@ -31,7 +31,7 @@ public class AlunoHasCurso {
 		this.curso = curso;
 		this.id = new AlunoHasCursoId(aluno.getIdAluno(), curso.getIdCurso());
 	}
-
+	
 	public AlunoHasCursoId getId() {
 		return id;
 	}
