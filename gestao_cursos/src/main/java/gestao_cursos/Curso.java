@@ -2,6 +2,10 @@ package gestao_cursos;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,17 +23,21 @@ public class Curso {
 	@Column(name = "cd_curso")
 	private Long idCurso;
 	
-	@Column(name = "curso", nullable = false, length = 255)
+	@Column(name = "curso", nullable = false)
 	private String curso;
 	
-	@Column(name = "carga_horaria")
+	@Column(name = "carga_horaria", nullable = false)
 	private int cargaHoraria;
 	
+	@JsonIgnore
+	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "tb_instrutor_cd_instrutor", nullable = false)
+	@JoinColumn(name = "tb_instrutor_cd_instrutor")
 	private Instrutor instrutor;
 	
-	@OneToMany(mappedBy = "curso")
+	@JsonIgnore
+	@JsonManagedReference
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
 	private Set<RlAlunoCurso> matriculas;
 	
 	public Curso() {

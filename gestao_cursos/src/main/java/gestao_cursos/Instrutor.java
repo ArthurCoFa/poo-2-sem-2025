@@ -2,6 +2,9 @@ package gestao_cursos;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,12 +21,14 @@ public class Instrutor {
 	@Column(name = "cd_instrutor")
 	private Long idInstrutor;
 	
-	@Column(name = "nome_instrutor", nullable = false, length = 255)
+	@Column(name = "nome_instrutor", nullable = false)
 	private String nomeInstrutor;
 	
 	@Column(name = "idade")
 	private int idade;
 	
+	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy = "instrutor", cascade = CascadeType.ALL)
 	private List<Curso> cursosMinistrados;
 	
