@@ -29,8 +29,6 @@ public class Curso {
 	@Column(name = "carga_horaria", nullable = false)
 	private int cargaHoraria;
 	
-	@JsonIgnore
-	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "tb_instrutor_cd_instrutor")
 	private Instrutor instrutor;
