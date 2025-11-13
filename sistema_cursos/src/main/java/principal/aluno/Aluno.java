@@ -1,4 +1,4 @@
-package instrutor;
+package principal.aluno;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,15 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Instrutor {
+public class Aluno {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nomeInstrtutor;
-
-	private String cpf;
+	private String nome;
+	
+	private int idade;
 
 	public Long getId() {
 		return id;
@@ -24,19 +24,19 @@ public class Instrutor {
 		this.id = id;
 	}
 
-	public String getNomeInstrtutor() {
-		return nomeInstrtutor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeInstrtutor(String nomeInstrtutor) {
-		this.nomeInstrtutor = nomeInstrtutor;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public int getIdade() {
+		return idade;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 }

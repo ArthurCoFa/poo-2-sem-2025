@@ -1,5 +1,6 @@
-package instrutor;
+package principal.instrutor;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,8 +13,9 @@ public class Instrutor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nomeInstrtutor;
-
+	private String nome;
+	
+	@Column(length = 11)
 	private String cpf;
 
 	public Long getId() {
@@ -24,12 +26,12 @@ public class Instrutor {
 		this.id = id;
 	}
 
-	public String getNomeInstrtutor() {
-		return nomeInstrtutor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeInstrtutor(String nomeInstrtutor) {
-		this.nomeInstrtutor = nomeInstrtutor;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getCpf() {
