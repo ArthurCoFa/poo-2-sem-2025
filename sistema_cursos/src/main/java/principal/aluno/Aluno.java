@@ -1,5 +1,6 @@
 package principal.aluno;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,17 @@ public class Aluno {
 	private String nome;
 	
 	private int idade;
+	
+	@Column(length = 11)
+	private String cpf;
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	public Long getId() {
 		return id;

@@ -57,6 +57,7 @@ public class InstrutorController {
 			
 			instrutor.setCpf(novoInstrutor.getCpf());
 			instrutor.setNome(novoInstrutor.getNome());
+			instrutor.setIdade(novoInstrutor.getIdade());
 			
 			return instrutorRepository.save(instrutor);
 		}

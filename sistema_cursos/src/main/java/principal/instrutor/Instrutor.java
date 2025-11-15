@@ -17,6 +17,16 @@ public class Instrutor {
 	
 	@Column(length = 11)
 	private String cpf;
+	
+	private int idade;
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
 
 	public Long getId() {
 		return id;

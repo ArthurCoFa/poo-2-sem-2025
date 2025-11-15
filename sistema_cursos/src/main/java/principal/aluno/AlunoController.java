@@ -57,6 +57,7 @@ public class AlunoController {
 			
 			aluno.setNome(novoAluno.getNome());
 			aluno.setIdade(novoAluno.getIdade());
+			aluno.setCpf(novoAluno.getCpf());
 			
 			return alunoRepository.save(aluno);
 		}
