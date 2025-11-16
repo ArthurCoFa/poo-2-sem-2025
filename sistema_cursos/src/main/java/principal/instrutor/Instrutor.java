@@ -15,7 +15,7 @@ public class Instrutor {
 	
 	private String nome;
 	
-	@Column(length = 11)
+	@Column(length = 14)
 	private String cpf;
 	
 	private int idade;

@@ -13,11 +13,13 @@ public class Aluno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String nome;
 	
+	@Column(nullable = false)
 	private int idade;
 	
-	@Column(length = 11)
+	@Column(length = 14, nullable = false)
 	private String cpf;
 
 	public String getCpf() {
