@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Instrutor {
@@ -13,9 +14,12 @@ public class Instrutor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
+	@NotNull(message = "Nome não pode ser nulo!")
 	private String nome;
 	
-	@Column(length = 14)
+	@Column(length = 14, nullable = false, unique = true)
+	@NotNull(message = "CPF não pode ser nulo!")
 	private String cpf;
 	
 	private int idade;

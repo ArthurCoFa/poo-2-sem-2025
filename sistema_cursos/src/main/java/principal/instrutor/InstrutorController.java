@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/instrutores")
 public class InstrutorController {
@@ -37,7 +39,7 @@ public class InstrutorController {
 	}
 	
 	@PostMapping
-	public Instrutor salvarInstrutor(@RequestBody Instrutor instrutor) {
+	public Instrutor salvarInstrutor(@RequestBody @Valid Instrutor instrutor) {
 		return instrutorRepository.save(instrutor);
 	}
 	
