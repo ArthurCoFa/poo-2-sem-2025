@@ -13,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import principal.instrutor.InstrutorRepository;
+
 @RestController
 @RequestMapping("/api/alunos")
 public class AlunoController {
 
 	@Autowired
 	private AlunoRepository alunoRepository;
+	
+	@Autowired
+	private InstrutorRepository instrutorRepository;
 	
 	@GetMapping
 	public List<Aluno> listarAlunos(){
@@ -38,6 +43,19 @@ public class AlunoController {
 	
 	@PostMapping
 	public Aluno salvarAluno(@RequestBody Aluno aluno) {
+		
+		String cpf = aluno.getCpf();
+		
+		if(instrutorRepository.existsByCpf(cpf)) {
+			
+			throw new RuntimeException("CPF já existe em Insrutor!");
+		}
+		
+		if(alunoRepository.existsByCpf(cpf)) {
+			
+			throw new RuntimeException("CPF já existe em Aluno");
+		}
+		
 		return alunoRepository.save(aluno);
 	}
 	

@@ -19,7 +19,7 @@ public class Aluno {
 	@Column(nullable = false)
 	private int idade;
 	
-	@Column(length = 14, nullable = false)
+	@Column(length = 14, nullable = false, unique = true)
 	private String cpf;
 
 	public String getCpf() {

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import principal.aluno.AlunoRepository;
 
 @RestController
 @RequestMapping("/api/instrutores")
@@ -21,6 +22,9 @@ public class InstrutorController {
 
 	@Autowired
 	private InstrutorRepository instrutorRepository;
+	
+	@Autowired
+	private AlunoRepository alunoRepository;
 	
 	@GetMapping
 	public List<Instrutor> listarInstrutores() {
@@ -40,6 +44,19 @@ public class InstrutorController {
 	
 	@PostMapping
 	public Instrutor salvarInstrutor(@RequestBody @Valid Instrutor instrutor) {
+		
+		String cpf = instrutor.getCpf();
+		
+		if(instrutorRepository.existsByCpf(cpf)) {
+			
+			throw new RuntimeException("CPF já existe em Insrutor!");
+		}
+		
+		if(alunoRepository.existsByCpf(cpf)) {
+			
+			throw new RuntimeException("CPF já existe em Aluno");
+		}
+		
 		return instrutorRepository.save(instrutor);
 	}
 	
