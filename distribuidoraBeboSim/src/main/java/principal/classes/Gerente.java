@@ -19,16 +19,17 @@ public class Gerente {
 	
 	private LocalDate dtAdmissao;
 	
-	@Column(length = 20, nullable = false)
+	@Column(length = 20, nullable = false, unique = true)
 	private String nrCarteiraTrabalho;
 	
-	@Column(length = 14, nullable = false)
+	@Column(length = 14, nullable = false, unique = true)
 	private String cpf;
 	
 	private String endereco;
 	
 	private String telefone;
 	
+	@Column(nullable = false, unique = true)
 	private String email;
 
 	public Long getId() {

@@ -15,7 +15,7 @@ public class Cliente {
 	
 	private String razaoSocial;
 	
-	@Column(nullable = false, length = 18)
+	@Column(nullable = false, length = 18, unique = true)
 	private String cnpj;
 	
 	private String endereco;

@@ -17,7 +17,7 @@ public class Fabrica {
 	
 	private String endereco;
 	
-	@Column(nullable = false, length = 18)
+	@Column(nullable = false, length = 18, unique = true)
 	private String cnpj;
 	
 	private String areaConstrucao;
