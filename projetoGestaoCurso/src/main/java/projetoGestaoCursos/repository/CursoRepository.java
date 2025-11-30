@@ -1,8 +1,10 @@
-package principal.curso;
+package projetoGestaoCursos.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-// Interface para utilizar métodos CRUD
+import projetoGestaoCursos.model.Curso;
+
+//Interface para utilizar métodos CRUD
 public interface CursoRepository extends JpaRepository<Curso, Long> {
 
 }

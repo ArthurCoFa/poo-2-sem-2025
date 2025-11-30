@@ -1,4 +1,4 @@
-package principal.curso;
+package projetoGestaoCursos.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import principal.aluno.Aluno;
-import principal.instrutor.Instrutor;
 
 @Entity // Anotação para dizer que a classe é uma tabela
 public class Curso {

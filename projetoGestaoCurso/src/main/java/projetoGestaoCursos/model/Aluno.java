@@ -1,4 +1,4 @@
-package principal.aluno;
+package projetoGestaoCursos.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

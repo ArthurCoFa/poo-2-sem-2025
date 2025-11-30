@@ -5,25 +5,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
 
-@Entity
+@Entity // Anotação para dizer que a classe é uma tabela
 public class Instrutor {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // Anotação para identificar atributo Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Anotação para geração automática do Id
 	private Long id;
 	
-	@Column(nullable = false)
-	@NotNull(message = "Nome não pode ser nulo!")
+	@Column(nullable = false)// Anotação Column com nullable = false, não pode ser nulo
 	private String nome;
 	
-	@Column(length = 14, nullable = false, unique = true)
-	@NotNull(message = "CPF não pode ser nulo!")
+	@Column(length = 11, nullable = false, unique = true)// length 11, pois cpf tem 11 números, unique porque cpf é único
 	private String cpf;
 	
+	@Column(nullable = false)
 	private int idade;
 
+	// Getters e Setters
+	
 	public int getIdade() {
 		return idade;
 	}

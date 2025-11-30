@@ -1,4 +1,4 @@
-package principal.curso;
+package projetoGestaoCursos.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import principal.instrutor.Instrutor;
-import principal.instrutor.InstrutorRepository;
+import projetoGestaoCursos.model.Curso;
+import projetoGestaoCursos.model.Instrutor;
+import projetoGestaoCursos.repository.CursoRepository;
+import projetoGestaoCursos.repository.InstrutorRepository;
 
 @RestController // Anotação para deixar endpoint de @RequestMapping ativo e recebendo requisições
 @RequestMapping("/api/cursos") // Anotação para indicar o endpoint para usar os métodos
@@ -25,7 +27,7 @@ public class CursoController {
 	@Autowired
 	private InstrutorRepository instrutorRepository;
 	
-	@PostMapping("/{idIntrutor}") // Anotação que salva/cria novo objeto Curso, com id do Instrutor
+	@PostMapping("/{idInstrutor}") // Anotação que salva/cria novo objeto Curso, com id do Instrutor
 	public Curso adicionarCurso(@PathVariable Long idInstrutor, @RequestBody Curso curso) {
 		
 		Optional<Instrutor> optionalInstrutor = instrutorRepository.findById(idInstrutor);

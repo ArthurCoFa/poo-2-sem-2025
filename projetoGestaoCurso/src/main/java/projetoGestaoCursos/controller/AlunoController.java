@@ -1,4 +1,4 @@
-package principal.aluno;
+package projetoGestaoCursos.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import principal.instrutor.InstrutorRepository;
+import projetoGestaoCursos.model.Aluno;
+import projetoGestaoCursos.repository.AlunoRepository;
+import projetoGestaoCursos.repository.InstrutorRepository;
 
 @RestController // Anotação para deixar endpoint de @RequestMapping ativo e recebendo requisições
 @RequestMapping("/api/alunos") // Anotação para indicar o endpoint para usar os métodos
@@ -64,10 +66,19 @@ public class AlunoController {
 			
 			String cpf = novoAluno.getCpf();
 			
-			if(instrutorRepository.existsByCpf(cpf) || alunoRepository.existsByCpf(cpf)) { 
-				// Verificar se cpf digitado já existe em aluno ou instrutor
+			if(instrutorRepository.existsByCpf(cpf)) { 
+				// Verificar se cpf digitado já existe em instrutor
 				
-				throw new RuntimeException("Esse CPF já existe!");
+				throw new RuntimeException("Esse CPF já existe em Instrutor!");
+			}
+			if(alunoRepository.existsByCpf(cpf)) {
+				// Verifica se cpf já existe em aluno
+				
+				if(!optionalAluno.get().getId().equals(id)) {
+					// Verifica se o cpf é de um aluno diferente o qual deve atualizar
+					
+					throw new RuntimeException("Esse CPF já existe em Aluno!");
+				}
 			}
 			
 			return alunoRepository.save(aluno);
